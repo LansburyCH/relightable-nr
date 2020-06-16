@@ -1,6 +1,6 @@
 # Relightable Neural Renderer
 ### [Paper](https://arxiv.org/abs/1911.11530) | [Video](https://drive.google.com/file/d/1_uqgmkfQCjItk3sT6ye247Tjl_SWnQLD/view?usp=sharing) | [Supplementary Video](https://drive.google.com/file/d/1mCBHOCJ4h6dlh3NETotpWBbWVv0COPZj/view?usp=sharing)<!-- | [Data](https://drive.google.com/drive/folders/128yBriW1IG_3NJ5Rp7APSTZsJqdJdfc1) -->
-This repository contains a pytorch implementation for the CVPR 2020 paper **"A Neural Rendering Framework for Free-Viewpoint Relighting"**. Our work takes multi-view images of an object under an unknown illumination as input, and produces a neural representation that can be rendered for both novel viewpoint and novel lighting.<br><br>
+This repository contains a pytorch implementation for the paper: [A Neural Rendering Framework for Free-Viewpoint Relighting (CVPR 2020)](https://arxiv.org/abs/1911.11530). Our work takes multi-view images of an object under an unknown illumination as input, and produces a neural representation that can be rendered for both novel viewpoint and novel lighting.<br><br>
 
 ![teasergif](https://github.com/LansburyCH/relightable-nr/blob/master/other/teaser.gif)
 
