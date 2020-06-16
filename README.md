@@ -45,11 +45,11 @@ data/
         test_seq/            # viewpoint sequences for inference
             spiral_step720/  # an example sequence
         calib.mat            # camera intrinsics and extrinsics for the images in rgb0/
-		mesh.obj             # proxy mesh with texture coordinates
-		mesh.obj.mtl
-		mesh_7500v.obj       # downsampled proxy mesh used for GCN
-		mesh_7500v.obj.mtl
-		tex.png              # texture image, can be just all white
+	mesh.obj             # proxy mesh with texture coordinates
+	mesh.obj.mtl
+	mesh_7500v.obj       # downsampled proxy mesh used for GCN
+	mesh_7500v.obj.mtl
+	tex.png              # texture image, can be just all white
 ```
 For your own scenes, you need to prepare the data layout as listed above. For example, you may need to use structure-from-motion and multi-view stereo tools to generate the required camera calibration and proxy mesh.
 
