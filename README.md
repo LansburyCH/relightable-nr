@@ -1,5 +1,5 @@
 # Relightable Neural Renderer
-### [Paper](https://arxiv.org/abs/1911.11530) | [Video](https://drive.google.com/file/d/1_uqgmkfQCjItk3sT6ye247Tjl_SWnQLD/view?usp=sharing) | [Supplementary Video](https://drive.google.com/file/d/1mCBHOCJ4h6dlh3NETotpWBbWVv0COPZj/view?usp=sharing)<!-- | [Data](https://drive.google.com/drive/folders/128yBriW1IG_3NJ5Rp7APSTZsJqdJdfc1) -->
+### [Paper](https://arxiv.org/abs/1911.11530) | [Video](https://drive.google.com/file/d/1_uqgmkfQCjItk3sT6ye247Tjl_SWnQLD/view?usp=sharing) | [Supplementary Video](https://drive.google.com/file/d/1mCBHOCJ4h6dlh3NETotpWBbWVv0COPZj/view?usp=sharing) | [Data](https://drive.google.com/drive/folders/11-YKY9e3aPhSYm7k9i9sA4clAYMvc4gM?usp=sharing)
 This repository contains a pytorch implementation for the paper: [A Neural Rendering Framework for Free-Viewpoint Relighting (CVPR 2020)](https://arxiv.org/abs/1911.11530). Our work takes multi-view images of an object under an unknown illumination as input, and produces a neural representation that can be rendered for both novel viewpoint and novel lighting.<br><br>
 
 ![teasergif](https://github.com/LansburyCH/relightable-nr/blob/master/other/teaser.gif)
@@ -35,7 +35,7 @@ python setup.py install
 
 ## Data Preparation
 #### Data Layout
-An example data is provided [here (coming soon)](https://). After downloading, create a ```data/``` directory under this project and extract the downloaded .zip to this directory. The final layout will look like:
+An example data is provided [here](https://drive.google.com/file/d/1jlQFeQnZy7jW87-_exv3LZ_cKlkZxVst/view?usp=sharing). After downloading, create a ```data/``` directory under this project and extract the downloaded .zip to this directory. The final layout will look like:
 ```
 data/
     material_sphere/         # root directory for a scene
