@@ -88,17 +88,17 @@ If you find our code or paper useful, please consider citing:
 ```
 
 ## Relevant Works
-[**Deferred Neural Rendering: Image Synthesis using Neural Textures (SIGGRAPH 2019)**](https://niessnerlab.org/projects/thies2019neural.html)
+[**Deferred Neural Rendering: Image Synthesis using Neural Textures (SIGGRAPH 2019)**](https://niessnerlab.org/projects/thies2019neural.html)<br>
 Justus Thies, Michael Zollhöfer, Matthias Nießner
 
-[**DeepVoxels: Learning Persistent 3D Feature Embeddings (CVPR 2019)**](https://vsitzmann.github.io/deepvoxels/)
+[**DeepVoxels: Learning Persistent 3D Feature Embeddings (CVPR 2019)**](https://vsitzmann.github.io/deepvoxels/)<br>
 Vincent Sitzmann, Justus Thies, Felix Heide, Matthias Nießner, Gordon Wetzstein, Michael Zollhöfer
 
-[**NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis (arXiv 2020)**](http://www.matthewtancik.com/nerf)
+[**NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis (arXiv 2020)**](http://www.matthewtancik.com/nerf)<br>
 Ben Mildenhall, Pratul P. Srinivasan, Matthew Tancik, Jonathan T. Barron, Ravi Ramamoorthi, Ren Ng
 
-[**Neural Voxel Renderer: Learning an Accurate and Controllable Rendering Tool (CVPR 2020)**](http://www.krematas.com/nvr/index.html)
+[**Neural Voxel Renderer: Learning an Accurate and Controllable Rendering Tool (CVPR 2020)**](http://www.krematas.com/nvr/index.html)<br>
 Konstantinos Rematas, Vittorio Ferrari
 
-[**Learning Implicit Surface Light Fields (arXiv 2020)**](https://arxiv.org/abs/2003.12406)
+[**Learning Implicit Surface Light Fields (arXiv 2020)**](https://arxiv.org/abs/2003.12406)<br>
 Michael Oechsle, Michael Niemeyer, Lars Mescheder, Thilo Strauss, Andreas Geiger
