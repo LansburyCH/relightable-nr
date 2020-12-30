@@ -7,7 +7,6 @@ from torch.utils.data import DataLoader
 import numpy as np
 import cv2
 import scipy.io
-from collections import OrderedDict
 
 import dataio
 import data_util
@@ -38,9 +37,9 @@ parser.add_argument('--calib_dir', type=str, required=True,
 parser.add_argument('--sampling_pattern', type=str, default='all', required=False)
 # checkpoint
 parser.add_argument('--checkpoint_dir', required=True,
-                    help='Path to a checkpoint to load render_net weights from.')
+                    help='Directory of a checkpoint to load weights from.')
 parser.add_argument('--checkpoint_name', required=True,
-                    help='Path to a checkpoint to load render_net weights from.')
+                    help='File name of a checkpoint to load weights from.')
 # misc
 parser.add_argument('--gpu_id', type=str, default='',
                     help='Cuda visible devices.')
@@ -142,13 +141,10 @@ texture_mapper = network.TextureMapper(texture_size = opt.texture_size,
                                         apply_sh = opt.apply_sh)
 
 # load checkpoint
-checkpoint_dict = util.custom_load([texture_mapper], ['texture_mapper'], checkpoint_fp, strict = False)
+checkpoint_dict = util.custom_load([texture_mapper], ['texture_mapper'], checkpoint_fp, strict = True)
 
 # trained lighting model
-new_state_dict = OrderedDict()
-for k, v in checkpoint_dict['lighting_model'].items():
-    name = k.replace("module.", "")
-    new_state_dict[name] = v
+new_state_dict = checkpoint_dict['lighting_model']
 lighting_model_train = network.LightingSH(l_dir, lmax = int(params['sh_lmax']), num_lighting = 2, num_channel = num_channel, fix_params = True)
 lighting_model_train.coeff.data = new_state_dict['coeff']
 lighting_model_train.l_samples.data = new_state_dict['l_samples']
@@ -169,42 +165,32 @@ else:
     raise ValueError('Unrecognized lighting type')
 
 # ray sampler specular
-new_state_dict = OrderedDict()
-for k, v in checkpoint_dict['ray_sampler'].items():
-    name = k.replace("module.", "")
-    new_state_dict[name] = v
-ray_sampler = network.RaySampler(num_azi = new_state_dict['num_azi'].cpu().detach().numpy(), 
+new_state_dict = checkpoint_dict['ray_sampler']
+ray_sampler = network.RaySampler(num_azi = new_state_dict['num_azi'].cpu().detach().numpy(),
                                 num_polar = new_state_dict['num_polar'].cpu().detach().numpy(), 
                                 interval_polar = new_state_dict['interval_polar'].cpu().detach().numpy())
-ray_sampler.load_state_dict(new_state_dict, strict = False)
+ray_sampler.load_state_dict(new_state_dict, strict = True)
 num_ray = ray_sampler.num_ray
 
 # ray sampler diffuse
-new_state_dict = OrderedDict()
-for k, v in checkpoint_dict['ray_sampler_diffuse'].items():
-    name = k.replace("module.", "")
-    new_state_dict[name] = v
-ray_sampler_diffuse = network.RaySampler(num_azi = new_state_dict['num_azi'].cpu().detach().numpy(), 
+new_state_dict = checkpoint_dict['ray_sampler_diffuse']
+ray_sampler_diffuse = network.RaySampler(num_azi = new_state_dict['num_azi'].cpu().detach().numpy(),
                                 num_polar = new_state_dict['num_polar'].cpu().detach().numpy(), 
                                 interval_polar = new_state_dict['interval_polar'].cpu().detach().numpy(),
                                 mode = 'diffuse')
-ray_sampler_diffuse.load_state_dict(new_state_dict, strict = False)
+ray_sampler_diffuse.load_state_dict(new_state_dict, strict = True)
 num_ray_diffuse = ray_sampler_diffuse.num_ray
 
 num_ray_total = num_ray + num_ray_diffuse
 
 # rendering net
-new_state_dict = OrderedDict()
-for k, v in checkpoint_dict['render_net'].items():
-    name = k.replace("module.", "")
-    new_state_dict[name] = v
 render_net = network.RenderingNet(nf0 = opt.nf0,
                                     in_channels = num_ray_total * 3 + 6 + opt.texture_num_ch,
                                     out_channels = 3 * num_ray_total,
                                     num_down_unet = 5,
                                     out_channels_gcn = int(params['out_channels_gcn'])
                                     )
-render_net.load_state_dict(new_state_dict, strict = False)
+render_net.load_state_dict(checkpoint_dict['render_net'], strict = True)
 
 # gcn output
 v_feature = checkpoint_dict['v_feature']

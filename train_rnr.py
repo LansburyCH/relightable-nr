@@ -106,14 +106,14 @@ parser.add_argument('--sampling_pattern', type=str, default='all', required=Fals
 parser.add_argument('--batch_size', type=int, default=1, help='Batch size.')
 # validation
 parser.add_argument('--sampling_pattern_val', type=str, default='all', required=False)
-parser.add_argument('--val_freq', type=int, default=100,
+parser.add_argument('--val_freq', type=int, default=1000,
                     help='Test on validation data every X iterations.')
 # misc
 parser.add_argument('--exp_name', type=str, default='', help='(optional) Name for experiment.')
 parser.add_argument('--gpu_id', type=str, default='', help='Cuda visible devices. First device for gcn, last device for the others.')
 parser.add_argument('--start_epoch', type=int, default=0, help='Start epoch')
 parser.add_argument('--log_freq', type=int, default=100, help='Save tensorboard logs every X iterations.')
-parser.add_argument('--ckp_freq', type=int, default=1000, help='Save checkpoint every X iterations.')
+parser.add_argument('--ckp_freq', type=int, default=5000, help='Save checkpoint every X iterations.')
 
 
 opt = parser.parse_args()

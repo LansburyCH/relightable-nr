@@ -1,7 +1,6 @@
 import os
 import numpy as np
 import torch
-from collections import OrderedDict
 
 
 def cond_mkdir(path):
@@ -26,13 +25,7 @@ def custom_load(models, names, path, strict = True):
     whole_dict = torch.load(path)
 
     for i in range(len(models)):
-        # create new OrderedDict that does not contain `module.`
-        new_state_dict = OrderedDict()
-        for k, v in whole_dict[names[i]].items():
-            name = k.replace("module.", "")
-            new_state_dict[name] = v
-
-        models[i].load_state_dict(new_state_dict, strict = strict)
+        models[i].load_state_dict(whole_dict[names[i]], strict = strict)
 
     return whole_dict
 
