@@ -73,8 +73,6 @@ Two examples are included in ```test_rnr.sh```, one for **novel view synthesis**
 
 The above two examples use the viewpoint sequence determined by ```spiral_step720/calib.mat```. To generate new viewpoint sequence, you need to create camera intrinsics and extrinsics for each frame, just like the provided ```calib.mat```.
 
-
-
 ## Citation
 If you find our code or paper useful, please consider citing:
 ```
@@ -85,6 +83,18 @@ If you find our code or paper useful, please consider citing:
   pages={5599--5610},
   year={2020}
 }
+```
+
+## Implementation of Deferred Neural Rendering
+An implementation of the paper "Deferred Neural Rendering: Image Synthesis using Neural Textures" is also included in this repository. It follows the same data layout and preprocessing as above, although some data will not be used in deferred neural rendering. 
+
+After data preparation, for training, run:
+```
+bash train_dnr.sh
+```
+For inference, run:
+```
+bash test_dnr.sh
 ```
 
 ## Relevant Works
